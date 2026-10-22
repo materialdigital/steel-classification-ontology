@@ -2,7 +2,7 @@ id: steel
 title: "Steel Classification Ontology"
 github_org: materialdigital
 git_main_branch: main
-repo: Steel-Classification-Ontology
+repo: steel-classification-ontology
 uribase: https://w3id.org/pmd
 uribase_suffix: steel
 preferredPrefix: STEEL
@@ -42,3 +42,8 @@ ci:
 
 namespaces:
   - https://w3id.org/pmd/steel/
+
+idranges:
+  - idsfor: steel
+    idprefix: https://w3id.org/pmd/steel/STEEL_
+    iddigits: 7
