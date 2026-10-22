@@ -20,7 +20,25 @@ import_group:
     - id: pmdco
       title: "PMD Core Ontology"
       mirror_from: https://raw.githubusercontent.com/materialdigital/core-ontology/refs/heads/main/src/ontology/pmdco.ttl
-
+    - id: tto
+      mirror_from: https://raw.githubusercontent.com/materialdigital/tensile-test-ontology/refs/heads/main/src/ontology/tto-full.owl 
+      module_type: custom
+    - id: uo
+      mirror_from: https://raw.githubusercontent.com/bio-ontology-research-group/unit-ontology/refs/heads/master/uo-full.owl
+      module_type: custom
+    - id: qudt
+      mirror_from: https://qudt.org/qudt-all
+      module_type: custom
+    - id: iao
+      title: "Information Artifact Ontology"
+      mirror_from: https://raw.githubusercontent.com/information-artifact-ontology/IAO/refs/heads/master/iao.owl
+      module_type: custom
+    - id: vto
+      mirror_from: https://raw.githubusercontent.com/materialdigital/vickers-testing-ontology/refs/heads/main/vto-base.owl 
+      module_type: custom
+    - id: hto
+      mirror_from: https://raw.githubusercontent.com/materialdigital/heat-treatment-application-ontology/refs/heads/main/hto.owl 
+      module_type: custom
 # Components
 components:
   products:
