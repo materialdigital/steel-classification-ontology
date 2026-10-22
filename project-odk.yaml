@@ -1,0 +1,44 @@
+id: steel
+title: "Steel Classification Ontology"
+github_org: materialdigital
+git_main_branch: main
+repo: Steel-Classification-Ontology
+uribase: https://w3id.org/pmd
+uribase_suffix: steel
+preferredPrefix: STEEL
+edit_format: owl
+
+# DISABLE Templates for now
+use_templates: false
+
+# Imports 
+import_group:
+  annotate_with_labels: true
+  annotation_properties: ['rdfs:label', 'skos:definition', 'skos:example', 'skos:comment', 'skos:altLabel' ]
+  
+  products:
+    - id: pmdco
+      title: "PMD Core Ontology"
+      mirror_from: https://raw.githubusercontent.com/materialdigital/core-ontology/refs/heads/main/src/ontology/pmdco.ttl
+
+# Components
+components:
+  products:
+    - filename: imports-edit.owl
+    - filename: steel-axioms-shared.owl
+    - filename: steel-list.owl
+
+# Release
+primary_release: full
+release_artefacts:
+  - base
+  - full
+export_formats:
+  - owl
+  - ttl
+
+ci:
+  - github_actions
+
+namespaces:
+  - https://w3id.org/pmd/steel/
