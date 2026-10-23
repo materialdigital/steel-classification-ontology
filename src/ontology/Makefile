@@ -10,7 +10,7 @@
 # More information: https://github.com/INCATools/ontology-development-kit/
 
 # Fingerprint of the configuration file when this Makefile was last generated
-CONFIG_HASH=                52044d49f3d8c2f9cc30dda0741c32d7082f45921abd7c2dd85d80ce58a2df19
+CONFIG_HASH=                93f92ece56340e5f0f25a38712f28ad78198389f9d0ff48411e791badb2f87fa
 
 
 # ----------------------------------------
@@ -187,7 +187,7 @@ all_main: $(MAIN_FILES)
 # ----------------------------------------
 
 
-IMPORTS =  pmdco
+IMPORTS =  pmdco tto uo qudt iao vto hto
 
 IMPORT_ROOTS = $(patsubst %, $(IMPORTDIR)/%_import, $(IMPORTS))
 IMPORT_OWL_FILES = $(foreach n,$(IMPORT_ROOTS), $(n).owl)
@@ -409,6 +409,42 @@ $(IMPORTDIR)/%_import.owl: $(MIRRORDIR)/%.owl $(IMPORTDIR)/%_terms.txt \
 
 .PRECIOUS: $(IMPORTDIR)/%_import.owl
 
+## Module for ontology: tto (custom)
+$(IMPORTDIR)/tto_import.owl: $(MIRRORDIR)/tto.owl
+	@echo "ERROR: You have configured tto as a custom module;"
+	@echo "       This rule needs to be overwritten in steel.Makefile!"
+	@false
+
+## Module for ontology: uo (custom)
+$(IMPORTDIR)/uo_import.owl: $(MIRRORDIR)/uo.owl
+	@echo "ERROR: You have configured uo as a custom module;"
+	@echo "       This rule needs to be overwritten in steel.Makefile!"
+	@false
+
+## Module for ontology: qudt (custom)
+$(IMPORTDIR)/qudt_import.owl: $(MIRRORDIR)/qudt.owl
+	@echo "ERROR: You have configured qudt as a custom module;"
+	@echo "       This rule needs to be overwritten in steel.Makefile!"
+	@false
+
+## Module for ontology: iao (custom)
+$(IMPORTDIR)/iao_import.owl: $(MIRRORDIR)/iao.owl
+	@echo "ERROR: You have configured iao as a custom module;"
+	@echo "       This rule needs to be overwritten in steel.Makefile!"
+	@false
+
+## Module for ontology: vto (custom)
+$(IMPORTDIR)/vto_import.owl: $(MIRRORDIR)/vto.owl
+	@echo "ERROR: You have configured vto as a custom module;"
+	@echo "       This rule needs to be overwritten in steel.Makefile!"
+	@false
+
+## Module for ontology: hto (custom)
+$(IMPORTDIR)/hto_import.owl: $(MIRRORDIR)/hto.owl
+	@echo "ERROR: You have configured hto as a custom module;"
+	@echo "       This rule needs to be overwritten in steel.Makefile!"
+	@false
+
 endif # IMP=true
 
 .PHONY: refresh-imports
@@ -489,6 +525,48 @@ ifeq ($(MIR),true)
 .PRECIOUS: $(MIRRORDIR)/pmdco.owl
 mirror-pmdco: | $(TMPDIR)
 	$(ROBOT) convert -I https://raw.githubusercontent.com/materialdigital/core-ontology/refs/heads/main/src/ontology/pmdco.ttl -o $(TMPDIR)/$@.owl
+
+
+## ONTOLOGY: tto
+.PHONY: mirror-tto
+.PRECIOUS: $(MIRRORDIR)/tto.owl
+mirror-tto: | $(TMPDIR)
+	$(ROBOT) convert -I https://raw.githubusercontent.com/materialdigital/tensile-test-ontology/refs/heads/main/src/ontology/tto-full.owl -o $(TMPDIR)/$@.owl
+
+
+## ONTOLOGY: uo
+.PHONY: mirror-uo
+.PRECIOUS: $(MIRRORDIR)/uo.owl
+mirror-uo: | $(TMPDIR)
+	$(ROBOT) convert -I https://raw.githubusercontent.com/bio-ontology-research-group/unit-ontology/refs/heads/master/uo-full.owl -o $(TMPDIR)/$@.owl
+
+
+## ONTOLOGY: qudt
+.PHONY: mirror-qudt
+.PRECIOUS: $(MIRRORDIR)/qudt.owl
+mirror-qudt: | $(TMPDIR)
+	$(ROBOT) convert -I https://qudt.org/qudt-all -o $(TMPDIR)/$@.owl
+
+
+## ONTOLOGY: iao
+.PHONY: mirror-iao
+.PRECIOUS: $(MIRRORDIR)/iao.owl
+mirror-iao: | $(TMPDIR)
+	$(ROBOT) convert -I https://raw.githubusercontent.com/information-artifact-ontology/IAO/refs/heads/master/iao.owl -o $(TMPDIR)/$@.owl
+
+
+## ONTOLOGY: vto
+.PHONY: mirror-vto
+.PRECIOUS: $(MIRRORDIR)/vto.owl
+mirror-vto: | $(TMPDIR)
+	$(ROBOT) convert -I https://raw.githubusercontent.com/materialdigital/vickers-testing-ontology/refs/heads/main/vto-base.owl -o $(TMPDIR)/$@.owl
+
+
+## ONTOLOGY: hto
+.PHONY: mirror-hto
+.PRECIOUS: $(MIRRORDIR)/hto.owl
+mirror-hto: | $(TMPDIR)
+	$(ROBOT) convert -I https://raw.githubusercontent.com/materialdigital/heat-treatment-application-ontology/refs/heads/main/hto.owl -o $(TMPDIR)/$@.owl
 
 
 $(MIRRORDIR)/%.owl: mirror-% | $(MIRRORDIR)
