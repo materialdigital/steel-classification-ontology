@@ -8,33 +8,6 @@ IAO_TO_REMOVE = $(IMPORTDIR)/iao_to_remove.txt
 PMDCO_CLASSES_TO_REMOVE = $(IMPORTDIR)/pmdco_classes_to_remove.txt
 
 
-# Import TTO classes preserving subclass hierarchy to PMDco
-#$(IMPORTDIR)/tto_import.owl: $(MIRRORDIR)/tto.owl $(IMPORTDIR)/tto_terms.txt $(IMPORTSEED) | all_robot_plugins
-#
-#	$(ROBOT) annotate --input $< --remove-annotations \
-#			odk:normalize --add-source true \
-#			extract --term-file $(IMPORTDIR)/tto_terms.txt \
-#						--force true \
-#						--copy-ontology-annotations true \
-#						--individuals exclude \
-#						--intermediates all \
-#						--method BOT \
-#			remove --term-file $(IMPORTDIR)/tto_remove_parent.txt \
-#					--select "ancestors" \
-#					--trim false \
-#			remove --select "complement" --select "named" --trim true \
-#			remove --term-file $(IAO_TO_REMOVE) \
-#				   --select "individuals classes"\
-#			remove --term-file $(IMPORTDIR)/tto_to_remove.txt \
-#				   --select "classes"\
-#			remove --select individuals \
-#			odk:normalize --base-iri https://w3id.org/pmd/mech \
-#							--subset-decls true --synonym-decls true \
-#			remove --term http://purl.obolibrary.org/obo/IAO_0000412 \
-#					--select annotation \
-#			annotate --ontology-iri $(ONTBASE)/$@ $(ANNOTATE_ONTOLOGY_VERSION) \
-#			convert -f owl --output $@.tmp.owl && mv $@.tmp.owl $@
-
 $(IMPORTDIR)/tto_import.owl: $(MIRRORDIR)/tto.owl $(IMPORTDIR)/tto_terms.txt $(IMPORTSEED) | all_robot_plugins
 	@echo "Generating import module from private TTO mirror..."
 	$(ROBOT) annotate --input $< --remove-annotations \
@@ -48,7 +21,7 @@ $(IMPORTDIR)/tto_import.owl: $(MIRRORDIR)/tto.owl $(IMPORTDIR)/tto_terms.txt $(I
 			remove --term "https://w3id.org/pmd/co/relatesTo" \
 				   --select "self" \
 				   --trim true \
-			odk:normalize --base-iri https://w3id.org/pmd/mech \
+			odk:normalize --base-iri https://w3id.org/pmd/steel \
 							--subset-decls true --synonym-decls true \
 			annotate --ontology-iri $(ONTBASE)/$@ $(ANNOTATE_ONTOLOGY_VERSION) \
 			convert -f owl --output $@.tmp.owl && mv $@.tmp.owl $@
@@ -108,7 +81,7 @@ $(IMPORTDIR)/vto_import.owl: $(MIRRORDIR)/vto.owl $(IMPORTDIR)/vto_terms.txt $(I
 			remove --term "https://w3id.org/pmd/co/relatesTo" \
 				   --select "self" \
 				   --trim true \
-			odk:normalize --base-iri https://w3id.org/pmd/mech \
+			odk:normalize --base-iri https://w3id.org/pmd/steel \
 							--subset-decls true --synonym-decls true \
 			annotate --ontology-iri $(ONTBASE)/$@ $(ANNOTATE_ONTOLOGY_VERSION) \
 			convert -f owl --output $@.tmp.owl && mv $@.tmp.owl $@
@@ -126,7 +99,7 @@ $(IMPORTDIR)/hto_import.owl: $(MIRRORDIR)/hto.owl $(IMPORTDIR)/hto_terms.txt $(I
 			remove --term "https://w3id.org/pmd/co/relatesTo" \
 				   --select "self" \
 				   --trim true \
-			odk:normalize --base-iri https://w3id.org/pmd/mech \
+			odk:normalize --base-iri https://w3id.org/pmd/steel \
 							--subset-decls true --synonym-decls true \
 			annotate --ontology-iri $(ONTBASE)/$@ $(ANNOTATE_ONTOLOGY_VERSION) \
 			convert -f owl --output $@.tmp.owl && mv $@.tmp.owl $@
@@ -177,21 +150,21 @@ $(ONT)-base.owl: $(EDIT_PREPROCESSED) $(OTHER_SRC) $(IMPORT_FILES)
 		--output $@.tmp.owl && mv $@.tmp.owl $@
 
 
-CITATION=mech: Mechanical Testing Ontology. Version $(VERSION), https://w3id.org/pmd/mech/
+CITATION=steel: Steel Classification Ontology. Version $(VERSION), https://w3id.org/pmd/steel/
 
-ALL_ANNOTATIONS=--ontology-iri https://w3id.org/pmd/mech/ -V https://w3id.org/pmd/mech/$(VERSION) \
+ALL_ANNOTATIONS=--ontology-iri https://w3id.org/pmd/steel/ -V https://w3id.org/pmd/steel/$(VERSION) \
 	--annotation http://purl.org/dc/terms/created "$(TODAY)" \
 	--annotation owl:versionInfo "$(VERSION)" \
 	--annotation http://purl.org/dc/terms/bibliographicCitation "$(CITATION)" \
-	--link-annotation owl:priorVersion https://w3id.org/pmd/mech/$(PRIOR_VERSION)
+	--link-annotation owl:priorVersion https://w3id.org/pmd/steel/$(PRIOR_VERSION)
 
 update-ontology-annotations: 
-	$(ROBOT) annotate --input mech.owl $(ALL_ANNOTATIONS) --output ../../mech.owl
-	$(ROBOT) annotate --input mech.ttl $(ALL_ANNOTATIONS) --output ../../mech.ttl
-	$(ROBOT) annotate --input mech-full.owl $(ALL_ANNOTATIONS) --output ../../mech-full.owl
-	$(ROBOT) annotate --input mech-full.ttl $(ALL_ANNOTATIONS) --output ../../mech-full.ttl
-	$(ROBOT) annotate --input mech-base.owl $(ALL_ANNOTATIONS) --output ../../mech-base.owl
-	$(ROBOT) annotate --input mech-base.ttl $(ALL_ANNOTATIONS) --output ../../mech-base.ttl
-	@if [ -f mech-simple.owl ]; then $(ROBOT) annotate --input mech-simple.owl $(ALL_ANNOTATIONS) --output ../../mech-simple.owl; fi
+	$(ROBOT) annotate --input steel.owl $(ALL_ANNOTATIONS) --output ../../steel.owl
+	$(ROBOT) annotate --input steel.ttl $(ALL_ANNOTATIONS) --output ../../steel.ttl
+	$(ROBOT) annotate --input steel-full.owl $(ALL_ANNOTATIONS) --output ../../steel-full.owl
+	$(ROBOT) annotate --input steel-full.ttl $(ALL_ANNOTATIONS) --output ../../steel-full.ttl
+	$(ROBOT) annotate --input steel-base.owl $(ALL_ANNOTATIONS) --output ../../steel-base.owl
+	$(ROBOT) annotate --input steel-base.ttl $(ALL_ANNOTATIONS) --output ../../steel-base.ttl
+	@if [ -f steel-simple.owl ]; then $(ROBOT) annotate --input steel-simple.owl $(ALL_ANNOTATIONS) --output ../../steel-simple.owl; fi
 
 all_assets: update-ontology-annotations
