@@ -39,6 +39,9 @@ import_group:
     - id: hto
       mirror_from: https://raw.githubusercontent.com/materialdigital/heat-treatment-application-ontology/refs/heads/main/hto-base.owl 
       module_type: custom
+    - id: mech
+      mirror_from: https://raw.githubusercontent.com/materialdigital/mechanical-testing-ontology/refs/heads/main/mech-base.owl 
+      module_type: custom
 # Components
 components:
   products:

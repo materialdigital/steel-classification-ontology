@@ -1,0 +1,1 @@
+https://w3id.org/pmd/mech/MECH_0000032 # fatigue endurance limit
