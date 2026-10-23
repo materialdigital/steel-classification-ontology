@@ -8,6 +8,7 @@
     <uri name="https://w3id.org/pmd/steel/imports/iao_import.owl" uri="imports/iao_import.owl" />
     <uri name="https://w3id.org/pmd/steel/imports/vto_import.owl" uri="imports/vto_import.owl" />
     <uri name="https://w3id.org/pmd/steel/imports/hto_import.owl" uri="imports/hto_import.owl" />
+    <uri name="https://w3id.org/pmd/steel/imports/mech_import.owl" uri="imports/mech_import.owl" />
     <uri name="https://w3id.org/pmd/steel/components/imports-edit.owl" uri="components/imports-edit.owl" />
     <uri name="https://w3id.org/pmd/steel/components/steel-axioms-shared.owl" uri="components/steel-axioms-shared.owl" />
     <uri name="https://w3id.org/pmd/steel/components/steel-list.owl" uri="components/steel-list.owl" />
