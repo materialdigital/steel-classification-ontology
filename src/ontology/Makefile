@@ -10,7 +10,7 @@
 # More information: https://github.com/INCATools/ontology-development-kit/
 
 # Fingerprint of the configuration file when this Makefile was last generated
-CONFIG_HASH=                003ca3d14e81c2742e7d64fb14e1d20ecc9e0bf8f4fc1d0b64c1ed6a541db508
+CONFIG_HASH=                c39490ca3f6ab74794d7556a5dc40cbfc1375cc6e8f2ce6adf930dda1abb8acb
 
 
 # ----------------------------------------
@@ -537,7 +537,7 @@ mirror-pmdco: | $(TMPDIR)
 .PHONY: mirror-tto
 .PRECIOUS: $(MIRRORDIR)/tto.owl
 mirror-tto: | $(TMPDIR)
-	$(ROBOT) convert -I https://raw.githubusercontent.com/materialdigital/tensile-test-ontology/refs/heads/main/src/ontology/tto-base.owl -o $(TMPDIR)/$@.owl
+	$(ROBOT) convert -I https://raw.githubusercontent.com/materialdigital/tensile-test-ontology/refs/heads/main/src/ontology/tto.owl -o $(TMPDIR)/$@.owl
 
 
 ## ONTOLOGY: uo
@@ -572,14 +572,14 @@ mirror-vto: | $(TMPDIR)
 .PHONY: mirror-hto
 .PRECIOUS: $(MIRRORDIR)/hto.owl
 mirror-hto: | $(TMPDIR)
-	$(ROBOT) convert -I https://raw.githubusercontent.com/materialdigital/heat-treatment-application-ontology/refs/heads/main/hto-base.owl -o $(TMPDIR)/$@.owl
+	$(ROBOT) convert -I https://raw.githubusercontent.com/materialdigital/heat-treatment-application-ontology/refs/heads/main/hto.owl -o $(TMPDIR)/$@.owl
 
 
 ## ONTOLOGY: mech
 .PHONY: mirror-mech
 .PRECIOUS: $(MIRRORDIR)/mech.owl
 mirror-mech: | $(TMPDIR)
-	$(ROBOT) convert -I https://raw.githubusercontent.com/materialdigital/mechanical-testing-ontology/refs/heads/main/mech-base.owl -o $(TMPDIR)/$@.owl
+	$(ROBOT) convert -I https://raw.githubusercontent.com/materialdigital/mechanical-testing-ontology/refs/heads/main/mech.owl -o $(TMPDIR)/$@.owl
 
 
 $(MIRRORDIR)/%.owl: mirror-% | $(MIRRORDIR)
