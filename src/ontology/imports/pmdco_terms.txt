@@ -36,6 +36,7 @@ https://w3id.org/pmd/co/PMD_0000618  # elastic modulus
 https://w3id.org/pmd/co/PMD_0025018  # geometric relational quality
 http://purl.obolibrary.org/obo/BFO_0000063 # precedes
 https://w3id.org/pmd/co/PMD_0000789 # indentation hardness
+https://w3id.org/pmd/co/PMD_0025026 # lubricant role
 
 # previously from TTO 
 https://w3id.org/pmd/co/PMD_0060014  # gauge length
